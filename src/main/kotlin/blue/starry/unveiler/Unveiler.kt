@@ -1,16 +1,17 @@
 package blue.starry.unveiler
 
-import io.ktor.client.request.*
+import io.ktor.client.request.get
+import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-import net.dv8tion.jda.api.events.message.guild.GuildMessageDeleteEvent
-import net.dv8tion.jda.api.events.message.guild.GuildMessageReceivedEvent
+import net.dv8tion.jda.api.entities.ChannelType
+import net.dv8tion.jda.api.events.message.MessageDeleteEvent
+import net.dv8tion.jda.api.events.message.MessageReceivedEvent
 import net.dv8tion.jda.api.hooks.ListenerAdapter
 import net.dv8tion.jda.api.utils.AttachmentOption
 import java.nio.file.Files
 import kotlin.io.path.name
 import kotlin.io.path.writeBytes
-import kotlin.streams.toList
 
 object Unveiler: ListenerAdapter() {
     private val targetChannel by lazy {
@@ -18,8 +19,9 @@ object Unveiler: ListenerAdapter() {
             ?: error("TextChannel: ${Env.DISCORD_CHANNEL_ID} is not found.")
     }
 
-    override fun onGuildMessageReceived(event: GuildMessageReceivedEvent) {
-        if (event.author == event.jda.selfUser) {
+    @OptIn(DelicateCoroutinesApi::class)
+    override fun onMessageReceived(event: MessageReceivedEvent) {
+        if (event.author == event.jda.selfUser || !event.isFromType(ChannelType.TEXT)) {
             return
         }
 
@@ -37,7 +39,7 @@ object Unveiler: ListenerAdapter() {
         }
     }
 
-    override fun onGuildMessageDelete(event: GuildMessageDeleteEvent) {
+    override fun onMessageDelete(event: MessageDeleteEvent) {
         val paths = Files.list(dataDirectory)
             .filter { it.fileName.name.startsWith("${event.guild.id}_${event.channel.id}_${event.messageId}_") }
             .toList()
