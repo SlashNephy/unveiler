@@ -9,7 +9,7 @@ repositories {
 
 dependencies {
     implementation("net.dv8tion:JDA:5.0.0-alpha.12")
-    implementation("io.ktor:ktor-client-cio:1.6.8")
+    implementation("io.ktor:ktor-client-cio:2.0.2")
 
     implementation("io.github.microutils:kotlin-logging:2.1.23")
     implementation("ch.qos.logback:logback-classic:1.2.11")
