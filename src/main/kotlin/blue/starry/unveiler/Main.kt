@@ -1,16 +1,13 @@
 package blue.starry.unveiler
 
-import mu.KotlinLogging
-import java.nio.file.Files
-import java.nio.file.Paths
-
-internal val logger = KotlinLogging.logger("unveiler")
-internal val dataDirectory = Paths.get("data")
+import net.dv8tion.jda.api.JDABuilder
+import net.dv8tion.jda.api.OnlineStatus
 
 fun main() {
-    if (!Files.exists(dataDirectory)) {
-        Files.createDirectories(dataDirectory)
-    }
+    val jda = JDABuilder.createDefault(Env.DISCORD_TOKEN)
+        .addEventListeners(UnveilerListener)
+        .setStatus(OnlineStatus.INVISIBLE)
+        .build()
 
-    UnveilerJDAClient.awaitReady()
+    jda.awaitReady()
 }

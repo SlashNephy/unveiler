@@ -1,5 +1,6 @@
 plugins {
-    kotlin("jvm") version "1.6.21"
+    kotlin("jvm") version "1.7.0"
+    kotlin("plugin.serialization") version "1.7.0"
     id("com.github.johnrengelman.shadow") version "7.1.2"
 }
 
@@ -8,8 +9,11 @@ repositories {
 }
 
 dependencies {
+    implementation(kotlin("stdlib"))
+
     implementation("net.dv8tion:JDA:5.0.0-alpha.12")
-    implementation("io.ktor:ktor-client-cio:1.6.8")
+    implementation("io.ktor:ktor-client-java:2.0.2")
+    implementation("org.litote.kmongo:kmongo-coroutine-serialization:4.6.1")
 
     implementation("io.github.microutils:kotlin-logging:2.1.23")
     implementation("ch.qos.logback:logback-classic:1.2.11")
@@ -20,9 +24,8 @@ kotlin {
         compilations.all {
             kotlinOptions {
                 jvmTarget = JavaVersion.VERSION_17.toString()
-                apiVersion = "1.6"
-                languageVersion = "1.6"
-                verbose = true
+                apiVersion = "1.7"
+                languageVersion = "1.7"
             }
         }
     }
@@ -31,7 +34,6 @@ kotlin {
         languageSettings {
             progressiveMode = true
             optIn("kotlin.RequiresOptIn")
-            optIn("kotlinx.coroutines.DelicateCoroutinesApi")
         }
     }
 }
