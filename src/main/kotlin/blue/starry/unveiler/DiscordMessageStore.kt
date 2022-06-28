@@ -27,7 +27,7 @@ class DiscordMessageStore(private val databaseUri: String) {
         val filter = DiscordMessage::id eq message.idLong
 
         // すでに登録されているメッセージなら更新する
-        if (collection.findOne() != null) {
+        if (collection.findOne(filter) != null) {
             collection.replaceOne(filter, DiscordMessage.from(message))
             logger.info { "Replaced: message = ${message.id}" }
         } else {
