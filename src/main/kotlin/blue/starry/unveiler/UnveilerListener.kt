@@ -8,6 +8,7 @@ import net.dv8tion.jda.api.events.message.MessageDeleteEvent
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent
 import net.dv8tion.jda.api.events.message.MessageUpdateEvent
 import net.dv8tion.jda.api.hooks.ListenerAdapter
+import net.dv8tion.jda.api.utils.FileUpload
 import java.util.concurrent.Executors
 import kotlin.coroutines.resume
 import kotlin.coroutines.resumeWithException
@@ -93,7 +94,8 @@ object UnveilerListener: ListenerAdapter(), CoroutineScope {
             coroutineScope {
                 launch {
                     suspendCoroutine { cont ->
-                        channel.sendFile(attachment.stream, attachment.filename).queue(
+                        val upload = FileUpload.fromData(attachment.stream, attachment.filename)
+                        channel.sendFiles(upload).queue(
                             { cont.resume(Unit) },
                             { cont.resumeWithException(it) }
                         )
