@@ -11,7 +11,7 @@ repositories {
 dependencies {
     implementation(kotlin("stdlib"))
 
-    implementation("net.dv8tion:JDA:5.0.0-alpha.18")
+    implementation("net.dv8tion:JDA:5.0.0-alpha.20")
     implementation("io.ktor:ktor-client-java:2.1.1")
     implementation("org.litote.kmongo:kmongo-coroutine-serialization:4.7.1")
 
