@@ -16,7 +16,7 @@ dependencies {
     implementation("org.litote.kmongo:kmongo-coroutine-serialization:4.7.2")
 
     implementation("io.github.microutils:kotlin-logging:2.1.23")
-    implementation("ch.qos.logback:logback-classic:1.4.4")
+    implementation("ch.qos.logback:logback-classic:1.4.6")
 }
 
 kotlin {
