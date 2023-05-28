@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   db:
-    image: mongo:5.0
+    image: mongo:5.0@sha256:9dc967294bb352d7f5affb245c36bf81212fbed8f64cbf84a2a437a4f2fd527f
     restart: always
     ports:
       - '27017:27017/tcp'
