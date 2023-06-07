@@ -3,7 +3,7 @@ package blue.starry.unveiler
 import kotlinx.coroutines.*
 import net.dv8tion.jda.api.EmbedBuilder
 import net.dv8tion.jda.api.entities.Message
-import net.dv8tion.jda.api.entities.TextChannel
+import net.dv8tion.jda.api.entities.channel.concrete.TextChannel
 import net.dv8tion.jda.api.events.message.MessageDeleteEvent
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent
 import net.dv8tion.jda.api.events.message.MessageUpdateEvent
@@ -70,7 +70,7 @@ object UnveilerListener: ListenerAdapter(), CoroutineScope {
         val message = messages.find(messageId) ?: return
 
         val embed = EmbedBuilder()
-            .setAuthor("${message.member.name ?: message.member.username} (${message.member.username}#${message.member.discriminator})", null, message.member.avatarUrl)
+            .setAuthor("${message.member.name ?: message.member.username} (${message.member.username})", null, message.member.avatarUrl)
             .setDescription(message.content)
             .setImage(message.stickers.firstOrNull()?.url)
             .setFooter("${message.guild.name} (#${message.channel.name}, ${message.channel.type})", message.guild.iconUrl)

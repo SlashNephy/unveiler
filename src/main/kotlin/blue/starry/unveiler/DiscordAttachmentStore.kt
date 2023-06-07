@@ -1,14 +1,14 @@
 package blue.starry.unveiler
 
-import io.ktor.client.HttpClient
-import io.ktor.client.plugins.defaultRequest
-import io.ktor.client.request.get
-import io.ktor.client.statement.readBytes
-import io.ktor.http.userAgent
+import io.ktor.client.*
+import io.ktor.client.plugins.*
+import io.ktor.client.request.*
+import io.ktor.client.statement.*
+import io.ktor.http.*
 import kotlinx.coroutines.*
 import mu.KotlinLogging
 import net.dv8tion.jda.api.entities.Message
-import net.dv8tion.jda.api.entities.Message.*
+import net.dv8tion.jda.api.entities.Message.Attachment
 import java.io.InputStream
 import java.nio.file.Files
 import java.nio.file.Paths
@@ -72,8 +72,9 @@ class DiscordAttachmentStore(dataDirectory: String) {
 
             if (!Files.exists(path)) {
                 path.writeBytes(data)
-                logger.info { "Downloaded: attachment = ${attachment.fileName}" }
             }
         }
+
+        logger.info { "Downloaded: attachment = ${attachment.fileName}" }
     }
 }

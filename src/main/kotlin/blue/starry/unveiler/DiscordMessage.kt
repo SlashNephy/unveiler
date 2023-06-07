@@ -1,9 +1,9 @@
 package blue.starry.unveiler
 
 import kotlinx.serialization.Serializable
-import net.dv8tion.jda.api.entities.ChannelType
 import net.dv8tion.jda.api.entities.Message
 import net.dv8tion.jda.api.entities.MessageType
+import net.dv8tion.jda.api.entities.channel.ChannelType
 
 @Serializable
 data class DiscordMessage(
@@ -20,7 +20,6 @@ data class DiscordMessage(
         val id: Long,
         val name: String?,
         val username: String,
-        val discriminator: String,
         val avatarUrl: String?,
     )
 
@@ -54,7 +53,6 @@ data class DiscordMessage(
                     id = message.author.idLong,
                     name = message.member?.nickname,
                     username = message.author.name,
-                    discriminator = message.author.discriminator,
                     avatarUrl = message.member?.effectiveAvatarUrl
                 ),
                 content = message.contentDisplay,
