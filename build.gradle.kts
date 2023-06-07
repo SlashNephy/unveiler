@@ -15,7 +15,7 @@ dependencies {
     implementation("io.ktor:ktor-client-java:2.3.1")
     implementation("org.litote.kmongo:kmongo-coroutine-serialization:4.7.2")
 
-    implementation("io.github.microutils:kotlin-logging:2.1.23")
+    implementation("io.github.microutils:kotlin-logging:3.0.5")
     implementation("ch.qos.logback:logback-classic:1.4.7")
 }
 
