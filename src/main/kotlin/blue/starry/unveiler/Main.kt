@@ -11,7 +11,7 @@ fun main() {
         Env.DISCORD_TOKEN,
         listOf(GatewayIntent.GUILD_MESSAGES, GatewayIntent.MESSAGE_CONTENT)
     )
-        .disableCache(CacheFlag.VOICE_STATE, CacheFlag.EMOJI, CacheFlag.STICKER, CacheFlag.SCHEDULED_EVENTS)
+        .disableCache(CacheFlag.VOICE_STATE, CacheFlag.SCHEDULED_EVENTS)
         .setChunkingFilter(ChunkingFilter.NONE)
         .addEventListeners(UnveilerListener)
         .setStatus(OnlineStatus.INVISIBLE)
