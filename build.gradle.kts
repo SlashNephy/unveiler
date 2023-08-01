@@ -12,7 +12,7 @@ dependencies {
     implementation(kotlin("stdlib"))
 
     implementation("net.dv8tion:JDA:5.0.0-beta.12")
-    implementation("io.ktor:ktor-client-java:2.3.2")
+    implementation("io.ktor:ktor-client-java:2.3.3")
     implementation("org.litote.kmongo:kmongo-coroutine-serialization:4.10.0")
 
     implementation("io.github.microutils:kotlin-logging:3.0.5")
