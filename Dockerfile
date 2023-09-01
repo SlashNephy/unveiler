@@ -1,10 +1,10 @@
-FROM gradle:8.3.0-jdk17@sha256:f2973784898e292638ecd16af4f9d2f7e32bfda5d07cc74248a152da926dbc41 AS cache
+FROM gradle:8.3.0-jdk17@sha256:408ed680491f63d0c75675cf0ecbaf11b4a3da4e01d65404633c0eb8c8fc3ec0 AS cache
 WORKDIR /app
 ENV GRADLE_USER_HOME /app/gradle
 COPY *.gradle.kts gradle.properties /app/
 RUN gradle shadowJar --parallel --console=verbose
 
-FROM gradle:8.3.0-jdk17@sha256:f2973784898e292638ecd16af4f9d2f7e32bfda5d07cc74248a152da926dbc41 AS build
+FROM gradle:8.3.0-jdk17@sha256:408ed680491f63d0c75675cf0ecbaf11b4a3da4e01d65404633c0eb8c8fc3ec0 AS build
 WORKDIR /app
 COPY --from=cache /app/gradle /home/gradle/.gradle
 COPY *.gradle.kts gradle.properties /app/
