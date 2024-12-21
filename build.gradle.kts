@@ -16,7 +16,7 @@ dependencies {
     implementation("org.litote.kmongo:kmongo-coroutine-serialization:4.11.0")
 
     implementation("io.github.microutils:kotlin-logging:3.0.5")
-    implementation("ch.qos.logback:logback-classic:1.5.14")
+    implementation("ch.qos.logback:logback-classic:1.5.15")
 }
 
 tasks.withType<com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar> {
