@@ -11,7 +11,7 @@ COPY *.gradle.kts gradle.properties /app/
 COPY src/main/ /app/src/main/
 RUN gradle shadowJar --parallel --console=verbose
 
-FROM amazoncorretto:18.0.2@sha256:1128cff77f7fb4512215a4ded2bf0a6ec3cd2bf0f414a72136b1bb1d5f6b0518 as runtime
+FROM amazoncorretto:21.0.7@sha256:722267dea6e71f73a2897c3cb1936e713764471874e5b2de7660c96b9998a225 as runtime
 WORKDIR /app
 
 COPY --from=build /app/build/libs/unveiler-all.jar /app/unveiler.jar
