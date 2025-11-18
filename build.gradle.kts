@@ -13,7 +13,7 @@ dependencies {
 
     implementation("net.dv8tion:JDA:5.6.1")
     implementation("io.ktor:ktor-client-java:2.3.13")
-    implementation("org.litote.kmongo:kmongo-coroutine-serialization:4.11.0")
+    implementation("org.litote.kmongo:kmongo-coroutine-serialization:5.5.1")
 
     implementation("io.github.microutils:kotlin-logging:3.0.5")
     implementation("ch.qos.logback:logback-classic:1.5.21")
